@@ -7,3 +7,5 @@ https://www.udemy.com/course/typescript-the-complete-developers-guide/
 \$ npm install -g typescript ts-node
 
 \$ npm install -g parcel-bundler
+
+\$ npm install -g json-server
