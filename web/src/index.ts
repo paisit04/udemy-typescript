@@ -1,22 +1,15 @@
-import { User } from "./models/User";
+import { UserList } from "./views/UserList";
+import { User, UserProps } from "./models/User";
 
-const collection = User.buildUserCollection();
+const users = User.buildUserCollection();
 
-collection.on("change", () => {
-  console.log(collection);
+users.on('change', ()  => {
+  const root = document.getElementById("root");
+  if (root) {
+    new UserList(root, users).render();
+  } else {
+    throw new Error("Root element not found");
+  }
 });
 
-collection.fetch();
-
-// user.save();
-
-// user.on("change", () => {
-//   console.log("Change #2");
-// });
-// user.on("save", () => {
-//   console.log("Save was triggered");
-// });
-
-// user.trigger("change");
-// user.trigger("save");
-// user.trigger("abc");
+users.fetch();
